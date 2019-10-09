@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.zetanet</groupId>
+    <artifactId>zetanet</artifactId>
+    <version>0.0.1-snapshot</version>
+    <packaging>pom</packaging>
+    <name>zetanet</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <downloadSources>true</downloadSources>
+        <downloadJavadocs>true</downloadJavadocs>
+        <jdk.version>1.8</jdk.version>
+
+        <!-- Spring boot versions -->
+        <version.spring-boot>2.0.0.RELEASE</version.spring-boot>
+
+        <!-- Unit test dependencies -->
+        <version.de.flapdoodle.embed.mongo>2.0.3</version.de.flapdoodle.embed.mongo>
+        <version.testng>6.14.2</version.testng>
+
+        <!-- AWS Versions -->
+        <version.aws-java-sdk-cognitoidentity>1.11.301</version.aws-java-sdk-cognitoidentity>
+
+        <version.fullstack-domain>1.0.0-snapshot</version.fullstack-domain>
+        <version.fullstack-user-repository>1.0.0-snapshot</version.fullstack-user-repository>
+        <version.fullstack-security>1.0.0-snapshot</version.fullstack-security>
+    </properties>
+
+    <modules>
+        <module>zetanet-domain</module>
+    </modules>
+</project>
