@@ -33,5 +33,7 @@
 
     <modules>
         <module>zetanet-domain</module>
+        <module>zetanet-user-service</module>
+        <module>zetanet-user-api</module>
     </modules>
 </project>
