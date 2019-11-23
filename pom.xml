@@ -2,6 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.1.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
     <groupId>com.zetanet</groupId>
     <artifactId>zetanet</artifactId>
     <version>0.0.1-snapshot</version>
@@ -17,19 +23,98 @@
         <jdk.version>1.8</jdk.version>
 
         <!-- Spring boot versions -->
-        <version.spring-boot>2.0.0.RELEASE</version.spring-boot>
+        <version.spring-boot>2.2.1.RELEASE</version.spring-boot>
 
-        <!-- Unit test dependencies -->
-        <version.de.flapdoodle.embed.mongo>2.0.3</version.de.flapdoodle.embed.mongo>
-        <version.testng>6.14.2</version.testng>
-
-        <!-- AWS Versions -->
-        <version.aws-java-sdk-cognitoidentity>1.11.301</version.aws-java-sdk-cognitoidentity>
-
-        <version.fullstack-domain>1.0.0-snapshot</version.fullstack-domain>
-        <version.fullstack-user-repository>1.0.0-snapshot</version.fullstack-user-repository>
-        <version.fullstack-security>1.0.0-snapshot</version.fullstack-security>
+        <version.zetanet-domain>0.0.1-snapshot</version.zetanet-domain>
+        <version.zetanet-user-api>0.0.1-snapshot</version.zetanet-user-api>
+        <version.zetanet-user-service>0.0.1-snapshot</version.zetanet-user-service>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Import dependency management from Spring Boot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${version.spring-boot}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-devtools</artifactId>
+                <scope>runtime</scope>
+                <optional>true</optional>
+            </dependency>
+            <!-- Unit test framework -->
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.11</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- AWS Cognito -->
+            <dependency>
+                <groupId>com.amazonaws</groupId>
+                <artifactId>aws-java-sdk-cognitoidentity</artifactId>
+                <version>${version.aws-java-sdk-cognitoidentity}</version>
+            </dependency>
+
+            <!-- Local dependencies -->
+            <dependency>
+                <groupId>com.zetanet</groupId>
+                <artifactId>zetanet-domain</artifactId>
+                <version>${version.zetanet-domain}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zetanet</groupId>
+                <artifactId>zetanet-user-service</artifactId>
+                <version>${version.zetanet-user-service}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
 
     <modules>
         <module>zetanet-domain</module>
