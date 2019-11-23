@@ -12,13 +12,12 @@
     <artifactId>zetanet-domain</artifactId>
     <version>0.0.1-snapshot</version>
 
-    <name>zetanet-domain</name>
+    <name>zetanet-domain [Zetanet Domain Model]</name>
 
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

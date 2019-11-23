@@ -12,7 +12,7 @@
     <artifactId>zetanet</artifactId>
     <version>0.0.1-snapshot</version>
     <packaging>pom</packaging>
-    <name>zetanet</name>
+    <name>zetanet [Zetanet Reactor]</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -24,6 +24,9 @@
 
         <!-- Spring boot versions -->
         <version.spring-boot>2.2.1.RELEASE</version.spring-boot>
+
+        <version.org.mapstruct>1.3.0.Final</version.org.mapstruct>
+        <version.org.projectlombok>1.18.10</version.org.projectlombok>
 
         <version.zetanet-domain>0.0.1-snapshot</version.zetanet-domain>
         <version.zetanet-user-api>0.0.1-snapshot</version.zetanet-user-api>
@@ -40,14 +43,8 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-devtools</artifactId>
-                <scope>runtime</scope>
-                <optional>true</optional>
-            </dependency>
-            <!-- Unit test framework -->
 
+            <!-- Unit test framework -->
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
@@ -55,11 +52,23 @@
                 <scope>test</scope>
             </dependency>
 
-            <!-- AWS Cognito -->
+            <!-- Model Helpers -->
             <dependency>
-                <groupId>com.amazonaws</groupId>
-                <artifactId>aws-java-sdk-cognitoidentity</artifactId>
-                <version>${version.aws-java-sdk-cognitoidentity}</version>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-jdk8</artifactId>
+                <version>${version.org.mapstruct}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${version.org.mapstruct}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${version.org.projectlombok}</version>
+                <scope>provided</scope>
             </dependency>
 
             <!-- Local dependencies -->
@@ -77,6 +86,25 @@
     </dependencyManagement>
 
     <dependencies>
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-web</artifactId>-->
+        <!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -93,15 +121,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
